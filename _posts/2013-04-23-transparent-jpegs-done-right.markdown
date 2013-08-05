@@ -144,3 +144,28 @@ Comment
 
 ## [DreamingInDroids](http://www.google.com)
 Brilliant! Thanks for the pictures demonstrating the different Porter-Duff modes! I had been wondering about them for a long time!
+
+## [MarceloMarra](http://www.marcelomarra.com)
+First of all, thanks for this awesome post! 
+
+I had a problem when using BitmapFactory.decodeStream instead of BitmapFactory.decodeResource (trying to load images from the network).
+I am using the same configs:
+        Bitmap source;
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        Resources res = getResources();
+        Bitmap mask = BitmapFactory.decodeResource(res, R.drawable.ic_head_mask, options);
+// THIS WORKS
+        source = BitmapFactory.decodeResource(res, R.drawable.ic_marcelo_d2, options);
+// THIS DOES NOT WORK
+        source = BitmapFactory.decodeStream(getResources().getAssets().open("marcelo_d2.jpg"), null, options);
+        source.setHasAlpha(true);
+        source = Bitmap.createScaledBitmap(source, mask.getWidth(), mask.getHeight(), false);
+        Canvas canvas = new Canvas(source);
+        Paint paint = new Paint();
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        canvas.drawBitmap(mask, 0, 0, paint);
+        mask.recycle();
+        
+Any thoughts???
+
