@@ -144,3 +144,16 @@ Comment
 
 ## [DreamingInDroids](http://www.google.com)
 Brilliant! Thanks for the pictures demonstrating the different Porter-Duff modes! I had been wondering about them for a long time!
+
+## [MarceloMarra](http://www.marcelomarra.com)
+Here is the solution for pre HONEYCOMB:
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            opts.inMutable = true;
+            source.setHasAlpha(true);
+        } else {
+            Bitmap bitmapResult = Bitmap.createBitmap(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);
+            Canvas c = new Canvas();
+            c.setBitmap(bitmapResult);
+            c.drawBitmap(source, 0, 0, new Paint());
+            source = bitmapResult;
+        }
