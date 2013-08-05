@@ -144,3 +144,6 @@ Comment
 
 ## [DreamingInDroids](http://www.google.com)
 Brilliant! Thanks for the pictures demonstrating the different Porter-Duff modes! I had been wondering about them for a long time!
+
+## [MarceloMarra](http://www.marcelomarra.com)
+Nevermind. The problem occurs with JPG only in pre Api Level 12 devices.
